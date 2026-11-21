@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, master]
     paths:
-      - "site/**"
+      - "docs/**"
       - "frontend/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -36,24 +36,22 @@ jobs:
         working-directory: frontend
         env:
           VITE_DEMO_MODE: "true"
-          # Relative base so /app/ works on any repo name / Pages path
           VITE_BASE: ./
         run: |
           npm ci
           npm run build
 
-      - name: Assemble site
+      - name: Assemble docs site
         run: |
-          rm -rf site/app
-          mkdir -p site/app
-          cp -R frontend/dist/. site/app/
-          # SPA fallback for deep links under /app/
-          cp site/app/index.html site/app/404.html
+          rm -rf docs/app
+          mkdir -p docs/app
+          cp -R frontend/dist/. docs/app/
+          cp docs/app/index.html docs/app/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: docs
 
   deploy:
     needs: build

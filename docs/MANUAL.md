@@ -70,11 +70,11 @@
 ```
 ┌──────────────────────────────┐
 │  Static site (GitHub Pages)  │
-│  /           → 랜딩 (site/)  │
+│  GitHub Pages (docs/ 폴더)   │
+│  /           → 랜딩          │
 │  /app/       → React 데모    │
-│     ├─ demo.ts               │
 │     └─ demo-data/snapshot.json
-│  (GitHub/MCP 수집 시)        │
+│  GitHub/MCP 수집 시          │
 │     └─ 브라우저 → api.github.com
 └──────────────────────────────┘
 ```
@@ -502,7 +502,8 @@ npm run build:demo
 ```
 
 Docker 이미지 빌드는 루트 `Dockerfile`이 프론트를 함께 넣습니다.  
-Pages는 `.github/workflows/pages.yml`이 `site/app/`에 데모 빌드 결과물을 넣습니다.
+Pages는 `.github/workflows/pages.yml`이 `docs/app/`에 데모 빌드 결과물을 넣습니다.  
+브랜치 배포를 쓰면 Settings에서 Folder를 **`/docs`** 로 지정합니다 (`/site`는 선택 불가).
 
 ---
 
@@ -542,25 +543,29 @@ Nginx/Caddy에서 `8080`으로 프록시하면 됩니다.
 
 ### 12.1 구성
 
+> Pages 브랜치 Source는 **`/`** 또는 **`/docs`만** 가능합니다. (`/site` 불가)
+
 | 경로 | 내용 |
 |------|------|
-| `site/index.html` | 소개 랜딩 (`Open live demo` → `/app/`) |
-| `site/app/` | 정적 React 데모 빌드 결과 (저장소에 포함 + CI가 재빌드 가능) |
-| `frontend/public/demo-data/snapshot.json` | 샘플 랭킹 |
+| `docs/index.html` | 소개 랜딩 (`Open live demo` → `/app/`) |
+| `docs/app/` | 정적 React 데모 (저장소 포함 + CI 재빌드 가능) |
+| `docs/PAGES.md` | Pages 설정 상세 |
+| `frontend/public/demo-data/snapshot.json` | 샘플 원본 |
 | `frontend/src/api/demo.ts` | 데모 API |
-| `.github/workflows/pages.yml` | 빌드 + Pages 배포 |
+| `.github/workflows/pages.yml` | Actions 배포 (선택) |
 
-### 12.2 활성화 절차
+### 12.2 활성화 절차 (Deploy from a branch — 권장)
 
-1. 레포 **Settings → Pages**  
-2. **Build and deployment → Source = GitHub Actions**  
-3. `main`/`master` push 또는 workflow **Deploy GitHub Pages** 수동 실행  
-4. 접속  
-   - `https://<user>.github.io/radar_everything/`  
-   - `https://<user>.github.io/radar_everything/app/`  
-5. About → Website에 Pages URL 입력 권장  
+1. 변경 push  
+2. 레포 **Settings → Pages**  
+3. **Source: Deploy from a branch**  
+4. Branch: `main` / Folder: **`/docs`** → Save  
+5. 접속  
+   - `https://<user>.github.io/<repo>/`  
+   - `https://<user>.github.io/<repo>/app/`  
+6. About → Website에 Pages URL 입력 권장  
 
-CI는 레포 이름에 맞춰 `VITE_BASE=/<repo>/app/` 을 자동 설정합니다.
+**GitHub Actions**를 쓸 경우 Source를 GitHub Actions로 두고 workflow를 실행하세요. 데모 빌드는 `VITE_BASE=./` 상대 경로를 사용합니다.
 
 ### 12.3 데모 사용 시나리오
 
@@ -609,11 +614,12 @@ CI는 레포 이름에 맞춰 `VITE_BASE=/<repo>/app/` 을 자동 설정합니�
 
 - **정상**입니다. CORS 때문에 샘플만 제공합니다. Docker를 사용하세요.
 
-### Pages `/app/` 가 404
+### Pages가 File not found / `/app/` 404
 
-- Actions 워크플로가 성공했는지 확인  
-- Source가 **GitHub Actions**인지 확인  
-- 레포 이름과 URL 경로가 일치하는지 확인 (`/<repo>/app/`)  
+- Settings → Pages → Folder가 **`/docs`** 인지 확인 (`/` 루트나 존재하지 않는 폴더면 실패)  
+- 저장소에 `docs/index.html`, `docs/app/index.html`이 push 됐는지 확인  
+- `/site` 폴더는 Pages Source로 **선택할 수 없음** → `docs/` 사용  
+- Actions 사용 시 워크플로 성공 여부 확인  
 
 ### Docker 빌드 OOM (npm/esbuild)
 

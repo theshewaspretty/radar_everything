@@ -7,7 +7,7 @@ GitHub 스타 · MCP 인기 서버 · 취약점(CVE/CVSS/보호나라) 같은 �
 - **GitHub Pages 데모**: 브라우저에서 UI·샘플·(선택) GitHub 라이브 조회 체험
 - **플러그인 소스**: `BaseCollector` 추가만으로 확장
 
-[매뉴얼](./docs/MANUAL.md) · [GitHub 소개 문구](./docs/GITHUB_LISTING.md) · [Pages 안내](./site/README.md) · [라이선스](./LICENSE)
+[매뉴얼](./docs/MANUAL.md) · [GitHub 소개 문구](./docs/GITHUB_LISTING.md) · [Pages 안내](./docs/PAGES.md) · [라이선스](./LICENSE)
 
 ---
 
@@ -20,7 +20,7 @@ GitHub 스타 · MCP 인기 서버 · 취약점(CVE/CVSS/보호나라) 같은 �
 | 기본 소스 | GitHub, MCP Servers, 취약점(KISA 보호나라 + NVD) |
 | 기간 | 주간(각 주) · 월간(각 월) · 연간 |
 | 풀스택 | FastAPI · React(Vite) · SQLite · Docker Compose |
-| Pages | 랜딩(`site/`) + 정적 데모 앱(`site/app/`) |
+| Pages | 랜딩(`docs/`) + 데모 앱(`docs/app/`) — GitHub는 `/docs`만 선택 가능 |
 | 라이선스 | MIT |
 
 ### 실행 방식 비교
@@ -76,21 +76,25 @@ GitHub 스타 · MCP 인기 서버 · 취약점(CVE/CVSS/보호나라) 같은 �
 
 ## GitHub Pages (랜딩 + 데모 앱)
 
-### 활성화
+> GitHub Pages 브랜치 배포는 **`/`** 또는 **`/docs`** 만 고를 수 있습니다.  
+> `/site` 폴더는 선택할 수 없어서, 사이트 파일은 전부 **`docs/`** 에 둡니다.
 
-1. 레포 **Settings → Pages → Source: GitHub Actions**
-2. `main` / `master`에 push (또는 Actions에서 **Deploy GitHub Pages** 수동 실행)
-3. 접속
-   - 소개: `https://<your-account>.github.io/radar_everything/`
-   - **데모 앱**: `https://<your-account>.github.io/radar_everything/app/`
+### 활성화 (가장 간단)
 
-워크플로: [`.github/workflows/pages.yml`](./.github/workflows/pages.yml)  
-데모 앱은 `site/app/`에 포함되어 있습니다. (Actions가 다시 빌드하거나, 로컬에서 `frontend`를 빌드해 복사)
+1. 변경 push  
+2. **Settings → Pages**  
+3. Source: **Deploy from a branch**  
+4. Branch: `main` + Folder: **`/docs`** → Save  
+5. 접속
+   - 소개: `https://<your-account>.github.io/<repo>/`
+   - **데모**: `https://<your-account>.github.io/<repo>/app/`
+
+(또는 Source를 **GitHub Actions**로 두고 [`.github/workflows/pages.yml`](./.github/workflows/pages.yml) 사용)
 
 데모가 안 보이면:
-1. `https://<user>.github.io/<repo>/app/` 로 직접 접속
-2. 최신 커밋에 `site/app/index.html`이 있는지 확인
-3. Pages Source가 **GitHub Actions** 또는 **`/site` 폴더**인지 확인 후 재배포
+1. `/app/` URL로 직접 접속
+2. 저장소에 `docs/index.html`, `docs/app/index.html`이 있는지 확인
+3. Pages Folder가 **`/docs`** 인지 확인 ( `/` 루트면 File not found 날 수 있음 )
 
 ### 데모에서 되는 것 / 안 되는 것
 
@@ -108,7 +112,7 @@ npm install
 npm run dev:demo
 ```
 
-자세한 내용은 [site/README.md](./site/README.md), [매뉴얼 §11.4](./docs/MANUAL.md#114-github-pages-켜기-랜딩--데모-앱)를 보세요.
+자세한 내용: [docs/PAGES.md](./docs/PAGES.md) · [매뉴얼 §12](./docs/MANUAL.md#12-github-pages-데모-앱)
 
 ---
 
@@ -271,9 +275,11 @@ radar_everything/
 ├── frontend/             # React 앱
 │   ├── public/demo-data/ # Pages 데모용 snapshot.json
 │   └── src/api/demo.ts   # 데모 모드 클라이언트
-├── site/                 # Pages 랜딩 (+ CI가 app/ 채움)
-├── docs/
+├── docs/                 # 문서 + GitHub Pages (/docs)
+│   ├── index.html        # 랜딩
+│   ├── app/              # 데모 앱
 │   ├── MANUAL.md
+│   ├── PAGES.md
 │   └── GITHUB_LISTING.md
 ├── .github/workflows/pages.yml
 ├── docker-compose.yml
@@ -311,7 +317,7 @@ radar_everything/
 |------|------|
 | [docs/MANUAL.md](./docs/MANUAL.md) | 설치·UI·API·Pages 데모·트러블슈팅 |
 | [docs/GITHUB_LISTING.md](./docs/GITHUB_LISTING.md) | Description / Topics / 홍보 문구 |
-| [site/README.md](./site/README.md) | Pages 랜딩·데모 배포 |
+| [docs/PAGES.md](./docs/PAGES.md) | Pages `/docs` 설정·데모 배포 |
 | [.env.example](./.env.example) | 환경변수 예시 |
 
 ---

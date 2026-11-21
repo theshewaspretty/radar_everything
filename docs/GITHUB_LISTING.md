@@ -95,9 +95,16 @@ radar, github, mcp, cve, docker, fastapi, react
 ## 4. Website / 홈페이지 필드
 
 GitHub Pages를 켠 뒤 About → Website에 넣으세요.
+(데모 앱은 `/app/` 경로입니다.)
 
 ```
 https://<your-account>.github.io/radar_everything/
+```
+
+데모 앱 직링크:
+
+```
+https://<your-account>.github.io/radar_everything/app/
 ```
 
 Pages 전이라면 README 앵커도 가능합니다.

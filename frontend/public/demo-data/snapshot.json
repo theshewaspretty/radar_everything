@@ -1,0 +1,447 @@
+{
+  "generated_at": "2026-11-21T00:00:00Z",
+  "note": "Static demo snapshot for GitHub Pages. Live Docker app collects fresh data.",
+  "sources": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "주간·월간·연간 기간에 생성되어 스타를 많이 받은 공개 저장소",
+      "supports_periods": ["weekly", "monthly", "yearly"],
+      "supports_severity": false,
+      "enabled": true
+    },
+    {
+      "id": "mcp",
+      "name": "MCP Servers",
+      "description": "Model Context Protocol 서버 — GitHub star / registry 기준 인기 순위",
+      "supports_periods": ["weekly", "monthly", "yearly"],
+      "supports_severity": false,
+      "enabled": true
+    },
+    {
+      "id": "vulnerability",
+      "name": "취약점 (KISA / CVE)",
+      "description": "보호나라(boho.or.kr) 취약점·보안공지 + NVD CVSS 심각도",
+      "supports_periods": ["weekly", "monthly", "yearly"],
+      "supports_severity": true,
+      "enabled": true
+    }
+  ],
+  "bundles": {
+    "github": {
+      "weekly": [
+        [
+          {
+            "external_id": "gh-1",
+            "title": "vercel/ai",
+            "description": "The AI Toolkit for TypeScript. From the creators of Next.js.",
+            "url": "https://github.com/vercel/ai",
+            "score": 18240,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "vercel",
+            "tags": ["ai", "typescript", "llm"]
+          },
+          {
+            "external_id": "gh-2",
+            "title": "openai/codex",
+            "description": "Lightweight coding agent that runs in your terminal",
+            "url": "https://github.com/openai/codex",
+            "score": 15420,
+            "score_label": "stars",
+            "language": "Rust",
+            "owner": "openai",
+            "tags": ["agent", "cli"]
+          },
+          {
+            "external_id": "gh-3",
+            "title": "browser-use/browser-use",
+            "description": "Make websites accessible for AI agents",
+            "url": "https://github.com/browser-use/browser-use",
+            "score": 12110,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "browser-use",
+            "tags": ["browser", "agent"]
+          },
+          {
+            "external_id": "gh-4",
+            "title": "anthropics/claude-code",
+            "description": "Claude Code agent tooling and examples",
+            "url": "https://github.com/anthropics/claude-code",
+            "score": 9870,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "anthropics",
+            "tags": ["claude", "agent"]
+          },
+          {
+            "external_id": "gh-5",
+            "title": "langchain-ai/langchain",
+            "description": "Build context-aware reasoning applications",
+            "url": "https://github.com/langchain-ai/langchain",
+            "score": 8760,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "langchain-ai",
+            "tags": ["langchain", "rag"]
+          },
+          {
+            "external_id": "gh-6",
+            "title": "excalidraw/excalidraw",
+            "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+            "url": "https://github.com/excalidraw/excalidraw",
+            "score": 7650,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "excalidraw",
+            "tags": ["whiteboard"]
+          },
+          {
+            "external_id": "gh-7",
+            "title": "astral-sh/uv",
+            "description": "Extremely fast Python package and project manager",
+            "url": "https://github.com/astral-sh/uv",
+            "score": 6540,
+            "score_label": "stars",
+            "language": "Rust",
+            "owner": "astral-sh",
+            "tags": ["python", "packaging"]
+          },
+          {
+            "external_id": "gh-8",
+            "title": "dbeaver/dbeaver",
+            "description": "Free universal database tool",
+            "url": "https://github.com/dbeaver/dbeaver",
+            "score": 5430,
+            "score_label": "stars",
+            "language": "Java",
+            "owner": "dbeaver",
+            "tags": ["database"]
+          }
+        ],
+        [
+          {
+            "external_id": "gh-w1-1",
+            "title": "microsoft/markitdown",
+            "description": "Python tool for converting files and office documents to Markdown",
+            "url": "https://github.com/microsoft/markitdown",
+            "score": 11200,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "microsoft",
+            "tags": ["markdown"]
+          },
+          {
+            "external_id": "gh-w1-2",
+            "title": "ggerganov/llama.cpp",
+            "description": "LLM inference in C/C++",
+            "url": "https://github.com/ggerganov/llama.cpp",
+            "score": 9800,
+            "score_label": "stars",
+            "language": "C++",
+            "owner": "ggerganov",
+            "tags": ["llm"]
+          },
+          {
+            "external_id": "gh-w1-3",
+            "title": "sxyazi/yazi",
+            "description": "Blazing fast terminal file manager",
+            "url": "https://github.com/sxyazi/yazi",
+            "score": 7200,
+            "score_label": "stars",
+            "language": "Rust",
+            "owner": "sxyazi",
+            "tags": ["tui"]
+          }
+        ]
+      ],
+      "monthly": [
+        [
+          {
+            "external_id": "gh-m0-1",
+            "title": "n8n-io/n8n",
+            "description": "Fair-code workflow automation with native AI",
+            "url": "https://github.com/n8n-io/n8n",
+            "score": 22100,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "n8n-io",
+            "tags": ["automation"]
+          },
+          {
+            "external_id": "gh-m0-2",
+            "title": "appwrite/appwrite",
+            "description": "Build like a team of hundreds",
+            "url": "https://github.com/appwrite/appwrite",
+            "score": 19800,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "appwrite",
+            "tags": ["baas"]
+          },
+          {
+            "external_id": "gh-m0-3",
+            "title": "frappe/erpnext",
+            "description": "Free and Open Source Enterprise Resource Planning",
+            "url": "https://github.com/frappe/erpnext",
+            "score": 14500,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "frappe",
+            "tags": ["erp"]
+          }
+        ]
+      ],
+      "yearly": [
+        [
+          {
+            "external_id": "gh-y0-1",
+            "title": "torvalds/linux",
+            "description": "Linux kernel source tree",
+            "url": "https://github.com/torvalds/linux",
+            "score": 198000,
+            "score_label": "stars",
+            "language": "C",
+            "owner": "torvalds",
+            "tags": ["kernel"]
+          },
+          {
+            "external_id": "gh-y0-2",
+            "title": "facebook/react",
+            "description": "The library for web and native user interfaces",
+            "url": "https://github.com/facebook/react",
+            "score": 236000,
+            "score_label": "stars",
+            "language": "JavaScript",
+            "owner": "facebook",
+            "tags": ["ui"]
+          },
+          {
+            "external_id": "gh-y0-3",
+            "title": "microsoft/vscode",
+            "description": "Visual Studio Code",
+            "url": "https://github.com/microsoft/vscode",
+            "score": 172000,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "microsoft",
+            "tags": ["editor"]
+          }
+        ]
+      ]
+    },
+    "mcp": {
+      "weekly": [
+        [
+          {
+            "external_id": "mcp-1",
+            "title": "modelcontextprotocol/servers",
+            "description": "Model Context Protocol reference servers",
+            "url": "https://github.com/modelcontextprotocol/servers",
+            "score": 68400,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "modelcontextprotocol",
+            "tags": ["mcp", "official"]
+          },
+          {
+            "external_id": "mcp-2",
+            "title": "microsoft/playwright-mcp",
+            "description": "Playwright MCP server for browser automation",
+            "url": "https://github.com/microsoft/playwright-mcp",
+            "score": 32100,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "microsoft",
+            "tags": ["mcp", "browser"]
+          },
+          {
+            "external_id": "mcp-3",
+            "title": "github/github-mcp-server",
+            "description": "GitHub's official MCP Server",
+            "url": "https://github.com/github/github-mcp-server",
+            "score": 29800,
+            "score_label": "stars",
+            "language": "Go",
+            "owner": "github",
+            "tags": ["mcp", "github"]
+          },
+          {
+            "external_id": "mcp-4",
+            "title": "punkpeye/awesome-mcp-servers",
+            "description": "A collection of MCP servers",
+            "url": "https://github.com/punkpeye/awesome-mcp-servers",
+            "score": 87100,
+            "score_label": "stars",
+            "language": null,
+            "owner": "punkpeye",
+            "tags": ["mcp", "awesome"]
+          },
+          {
+            "external_id": "mcp-5",
+            "title": "ChromeDevTools/chrome-devtools-mcp",
+            "description": "Chrome DevTools MCP",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+            "score": 41200,
+            "score_label": "stars",
+            "language": "TypeScript",
+            "owner": "ChromeDevTools",
+            "tags": ["mcp", "devtools"]
+          }
+        ]
+      ],
+      "monthly": [
+        [
+          {
+            "external_id": "mcp-m1",
+            "title": "PrefectHQ/fastmcp",
+            "description": "Fast, Pythonic MCP server framework",
+            "url": "https://github.com/PrefectHQ/fastmcp",
+            "score": 25100,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "PrefectHQ",
+            "tags": ["mcp", "python"]
+          },
+          {
+            "external_id": "mcp-m2",
+            "title": "modelcontextprotocol/python-sdk",
+            "description": "Official Python SDK for MCP",
+            "url": "https://github.com/modelcontextprotocol/python-sdk",
+            "score": 18900,
+            "score_label": "stars",
+            "language": "Python",
+            "owner": "modelcontextprotocol",
+            "tags": ["mcp", "sdk"]
+          }
+        ]
+      ],
+      "yearly": [
+        [
+          {
+            "external_id": "mcp-y1",
+            "title": "modelcontextprotocol/specification",
+            "description": "MCP specification",
+            "url": "https://github.com/modelcontextprotocol/specification",
+            "score": 4200,
+            "score_label": "stars",
+            "language": null,
+            "owner": "modelcontextprotocol",
+            "tags": ["mcp", "spec"]
+          }
+        ]
+      ]
+    },
+    "vulnerability": {
+      "weekly": [
+        [
+          {
+            "external_id": "CVE-2026-20127",
+            "title": "CVE-2026-20127",
+            "description": "Critical remote code execution affecting widely deployed network appliances.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20127",
+            "score": 10.0,
+            "score_label": "cvss",
+            "severity": "critical",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd", "critical"]
+          },
+          {
+            "external_id": "kisa:72064",
+            "title": "VMware 제품 보안 업데이트 권고",
+            "description": "KISA 보호나라 보안 권고 — VMware 제품 보안 업데이트",
+            "url": "https://www.boho.or.kr/",
+            "score": 42,
+            "score_label": "priority",
+            "severity": "high",
+            "language": "ko",
+            "owner": "KISA",
+            "tags": ["kisa", "advisory", "CVE-2026-41702"]
+          },
+          {
+            "external_id": "CVE-2026-109618",
+            "title": "CVE-2026-109618",
+            "description": "Authentication bypass in a popular web framework component.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109618",
+            "score": 9.8,
+            "score_label": "cvss",
+            "severity": "critical",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd", "critical"]
+          },
+          {
+            "external_id": "kisa:72050",
+            "title": "PHP 제품 보안 업데이트 권고",
+            "description": "PHP 보안 업데이트 권고 (보호나라)",
+            "url": "https://www.boho.or.kr/",
+            "score": 28,
+            "score_label": "priority",
+            "severity": "high",
+            "language": "ko",
+            "owner": "KISA",
+            "tags": ["kisa", "php"]
+          },
+          {
+            "external_id": "CVE-2026-85046",
+            "title": "CVE-2026-85046",
+            "description": "High severity memory corruption issue.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85046",
+            "score": 8.8,
+            "score_label": "cvss",
+            "severity": "high",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd", "high"]
+          }
+        ]
+      ],
+      "monthly": [
+        [
+          {
+            "external_id": "CVE-2026-5281",
+            "title": "CVE-2026-5281",
+            "description": "Privilege escalation via misconfigured access control.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5281",
+            "score": 8.8,
+            "score_label": "cvss",
+            "severity": "high",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd"]
+          },
+          {
+            "external_id": "CVE-2026-31431",
+            "title": "CVE-2026-31431",
+            "description": "Local privilege escalation.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31431",
+            "score": 7.8,
+            "score_label": "cvss",
+            "severity": "high",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd"]
+          }
+        ]
+      ],
+      "yearly": [
+        [
+          {
+            "external_id": "CVE-2026-2441",
+            "title": "CVE-2026-2441",
+            "description": "High impact vulnerability widely tracked this year.",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2441",
+            "score": 8.8,
+            "score_label": "cvss",
+            "severity": "high",
+            "language": "en",
+            "owner": "NVD",
+            "tags": ["cve", "nvd"]
+          }
+        ]
+      ]
+    }
+  }
+}

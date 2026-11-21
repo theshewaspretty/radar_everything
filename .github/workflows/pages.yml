@@ -5,6 +5,7 @@ on:
     branches: [main, master]
     paths:
       - "site/**"
+      - "frontend/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -18,23 +19,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Build demo app
+        working-directory: frontend
+        env:
+          VITE_DEMO_MODE: "true"
+          VITE_BASE: /${{ github.event.repository.name }}/app/
+        run: |
+          npm ci
+          npm run build
+
+      - name: Assemble site
+        run: |
+          rm -rf site/app
+          mkdir -p site/app
+          cp -R frontend/dist/. site/app/
+          # SPA fallback for deep links under /app/
+          cp site/app/index.html site/app/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

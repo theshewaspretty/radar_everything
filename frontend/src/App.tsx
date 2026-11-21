@@ -1,6 +1,7 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import {
   api,
+  IS_DEMO,
   type PeriodInfo,
   type PeriodType,
   type SourceInfo,
@@ -145,10 +146,20 @@ export default function App() {
 
   return (
     <div className="app-shell">
+      {IS_DEMO ? (
+        <div className="demo-banner" role="status">
+          <strong>Pages Demo</strong>
+          <span>
+            샘플 데이터로 UI를 체험합니다. GitHub/MCP의 「지금 수집」은 브라우저에서 GitHub API를
+            직접 호출해 볼 수 있습니다(rate limit 가능). 전체 자동 수집은 Docker로 실행하세요.
+          </span>
+          <a href="../">소개 페이지</a>
+        </div>
+      ) : null}
       <header className="hero">
         <RadarStage />
         <p style={{ margin: "0 0 0.75rem", fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--ink-soft)" }}>
-          SIGNAL · TREND RADAR
+          SIGNAL · TREND RADAR{IS_DEMO ? " · DEMO" : ""}
         </p>
         <h1 className="hero-brand">radar_everything</h1>
         <p className="hero-lead">
@@ -157,9 +168,9 @@ export default function App() {
         </p>
         <div className="hero-actions">
           <button className="btn btn-primary" onClick={handleCollect} disabled={collecting}>
-            {collecting ? "수집 중…" : "지금 수집"}
+            {collecting ? "수집 중…" : IS_DEMO ? "데모 수집" : "지금 수집"}
           </button>
-          <a className="btn btn-ghost" href="#setup">
+          <a className="btn btn-ghost" href={IS_DEMO ? "../#start" : "#setup"}>
             Clone &amp; run
           </a>
         </div>

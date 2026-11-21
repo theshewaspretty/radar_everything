@@ -1,3 +1,5 @@
+import { demoApi } from "./demo";
+
 export type PeriodType = "weekly" | "monthly" | "yearly";
 
 export type SourceInfo = {
@@ -45,6 +47,8 @@ export type TrendsResponse = {
   items: TrendItem[];
 };
 
+export const IS_DEMO = import.meta.env.VITE_DEMO_MODE === "true";
+
 const BASE = import.meta.env.VITE_API_BASE ?? "";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -59,7 +63,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export const api = {
+const liveApi = {
   health: () => request<{ status: string; version: string }>("/api/health"),
   sources: () => request<{ sources: SourceInfo[] }>("/api/sources"),
   periods: (source: string, periodType: PeriodType) =>
@@ -101,3 +105,5 @@ export const api = {
       last_run: { source: string; status: string; started_at: string | null } | null;
     }>("/api/stats"),
 };
+
+export const api = IS_DEMO ? demoApi : liveApi;

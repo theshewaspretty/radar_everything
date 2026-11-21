@@ -85,7 +85,12 @@ GitHub 스타 · MCP 인기 서버 · 취약점(CVE/CVSS/보호나라) 같은 �
    - **데모 앱**: `https://<your-account>.github.io/radar_everything/app/`
 
 워크플로: [`.github/workflows/pages.yml`](./.github/workflows/pages.yml)  
-프론트를 `VITE_DEMO_MODE=true`로 빌드해 `site/app/`에 넣습니다.
+데모 앱은 `site/app/`에 포함되어 있습니다. (Actions가 다시 빌드하거나, 로컬에서 `frontend`를 빌드해 복사)
+
+데모가 안 보이면:
+1. `https://<user>.github.io/<repo>/app/` 로 직접 접속
+2. 최신 커밋에 `site/app/index.html`이 있는지 확인
+3. Pages Source가 **GitHub Actions** 또는 **`/site` 폴더**인지 확인 후 재배포
 
 ### 데모에서 되는 것 / 안 되는 것
 

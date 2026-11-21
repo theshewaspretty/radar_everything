@@ -545,7 +545,7 @@ Nginx/Caddy에서 `8080`으로 프록시하면 됩니다.
 | 경로 | 내용 |
 |------|------|
 | `site/index.html` | 소개 랜딩 (`Open live demo` → `/app/`) |
-| `site/app/` | CI가 채우는 정적 React 데모 (저장소에는 보통 없음) |
+| `site/app/` | 정적 React 데모 빌드 결과 (저장소에 포함 + CI가 재빌드 가능) |
 | `frontend/public/demo-data/snapshot.json` | 샘플 랭킹 |
 | `frontend/src/api/demo.ts` | 데모 API |
 | `.github/workflows/pages.yml` | 빌드 + Pages 배포 |

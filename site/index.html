@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="radar_everything — GitHub · MCP · 취약점 신호를 주간/월간/연간으로 자동 수집하는 확장형 레이더. Docker로 바로 실행."
+    />
+    <meta name="theme-color" content="#eef3f8" />
+    <meta property="og:title" content="radar_everything" />
+    <meta
+      property="og:description"
+      content="Extensible radar for GitHub stars, MCP servers, and CVE/vuln trends — weekly, monthly, yearly."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/site.css" />
+    <title>radar_everything</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="top">
+        <a class="mark" href="./">radar_everything</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#start">Quick Start</a>
+          <a href="#docs">Docs</a>
+          <a
+            class="nav-cta"
+            id="repo-link"
+            href="https://github.com/radar_everything/radar_everything"
+            >GitHub</a
+          >
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">SIGNAL · TREND RADAR</p>
+          <h1>radar_everything</h1>
+          <p class="lead">
+            GitHub 스타 · MCP 서버 · 취약점(CVE) 신호를 주간·월간·연간으로 모으는 확장형 오픈소스
+            레이더. 소스는 플러그인으로 추가하고, Docker 한 줄로 로컬에서 바로 켭니다.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#start">Quick Start</a>
+            <a class="btn btn-ghost" id="repo-link-secondary" href="https://github.com/radar_everything/radar_everything"
+              >View repository</a
+            >
+          </div>
+        </div>
+        <div class="radar" aria-hidden="true">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="sweep"></div>
+          <div class="core"></div>
+          <span class="blip b1"></span>
+          <span class="blip b2"></span>
+          <span class="blip b3"></span>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <h2>한 레이더, 여러 신호</h2>
+        <p class="section-lead">기본 소스 3종을 같은 주/월/연 타임라인으로 탐색합니다.</p>
+        <div class="feature-grid">
+          <article>
+            <h3>GitHub</h3>
+            <p>기간별 공개 저장소를 star 기준으로 랭킹. Search API + Trending fallback.</p>
+          </article>
+          <article>
+            <h3>MCP Servers</h3>
+            <p>Model Context Protocol 서버를 star·registry 메타로 수집합니다.</p>
+          </article>
+          <article>
+            <h3>Vulnerabilities</h3>
+            <p>보호나라(boho.or.kr) RSS와 NVD CVE/CVSS 심각도를 함께 보여 줍니다.</p>
+          </article>
+          <article>
+            <h3>Plugin sources</h3>
+            <p><code>BaseCollector</code> 구현 후 registry에 등록하면 새 소스가 UI·API에 붙습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="start">
+        <h2>Quick Start</h2>
+        <p class="section-lead">
+          GitHub Pages는 프로젝트 소개 사이트입니다. 실제 레이더 앱은 로컬/서버에서 Docker로 실행하세요.
+        </p>
+        <pre class="code" tabindex="0"><code>git clone https://github.com/&lt;your-account&gt;/radar_everything.git
+cd radar_everything
+cp .env.example .env
+# GITHUB_TOKEN=ghp_...  (권장)
+
+docker compose up --build -d
+# → http://localhost:8080</code></pre>
+        <button class="btn btn-ghost copy-btn" type="button" data-copy-target=".code code">
+          Copy commands
+        </button>
+      </section>
+
+      <section class="section" id="docs">
+        <h2>Docs</h2>
+        <p class="section-lead">레포 안의 문서를 그대로 활용하세요.</p>
+        <ul class="doc-list">
+          <li>
+            <a id="readme-link" href="https://github.com/radar_everything/radar_everything#readme">README</a>
+            — 개요와 빠른 시작
+          </li>
+          <li>
+            <a id="manual-link" href="https://github.com/radar_everything/radar_everything/blob/main/docs/MANUAL.md"
+              >MANUAL</a
+            >
+            — 사용·운영·API·트러블슈팅
+          </li>
+          <li>
+            <a
+              id="listing-link"
+              href="https://github.com/radar_everything/radar_everything/blob/main/docs/GITHUB_LISTING.md"
+              >GITHUB_LISTING</a
+            >
+            — Description / Topics / 홍보 문구
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <p>
+          <strong>radar_everything</strong> · MIT License ·
+          <span id="pages-note">GitHub Pages project site</span>
+        </p>
+        <p class="fine">
+          Full app requires Docker (API + collectors). This page is a static landing for discovery and docs.
+        </p>
+      </footer>
+    </div>
+    <script src="./assets/site.js"></script>
+  </body>
+</html>

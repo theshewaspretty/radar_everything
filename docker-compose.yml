@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    container_name: radar_everything
+    ports:
+      - "${PORT:-8080}:8000"
+    environment:
+      APP_NAME: radar_everything
+      DATABASE_URL: sqlite:////data/radar_everything.db
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      NVD_API_KEY: ${NVD_API_KEY:-}
+      ENABLED_SOURCES: ${ENABLED_SOURCES:-github,mcp,vulnerability}
+      COLLECT_ON_STARTUP: ${COLLECT_ON_STARTUP:-true}
+      COLLECT_CRON_HOURS: ${COLLECT_CRON_HOURS:-6,18}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://localhost:5173}
+      DEFAULT_LIMIT: ${DEFAULT_LIMIT:-30}
+    volumes:
+      - radar_everything_data:/data
+    restart: unless-stopped
+
+volumes:
+  radar_everything_data:
